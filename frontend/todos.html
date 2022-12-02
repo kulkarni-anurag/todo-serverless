@@ -19,7 +19,9 @@
                     // console.log(response.Items);
 
                     response.Items.forEach(element => {
-                        $("#tb-body").append(`<tr><th scope="row">${element.name}</th><td>${element.description}</td><td>${element.date}</td><td>${element.status}</td><td><button class="btn btn-sm btn-success"><i class='bx bx-right-arrow-alt'></i></button><button class="btn btn-sm btn-danger ms-1"><i class='bx bx-trash'></i></button></td></tr>`);
+                        if(element.status == false){
+                            $("#tb-body").append(`<tr><th scope="row">${element.name}</th><td>${element.description}</td><td>${element.date}</td><td><a href="/frontend/complete-todo.html?name=${element.name}" class="btn btn-sm btn-success"><i class='bx bx-right-arrow-alt'></i></a><a href="/frontend/update-todo.html?name=${element.name}" class="btn btn-sm btn-warning ms-1"><i class='bx bx-edit'></i></a><a href="/frontend/delete-todo.html?name=${element.name}" class="btn btn-sm btn-danger ms-1"><i class='bx bx-trash'></i></a></td></tr>`);
+                        }
                     });
                 }
             })
@@ -60,7 +62,6 @@
                         <th scope="col">Name</th>
                         <th scope="col">Description</th>
                         <th scope="col">Due Date</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
