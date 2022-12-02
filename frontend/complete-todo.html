@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Serverless Application - Complete Todo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            const params = new URLSearchParams(window.location.search);
+
+            const taskName = params.get('name');
+            
+            $.ajax({
+                type: "GET",
+                url: `https://3vg3ydebt9.execute-api.ap-south-1.amazonaws.com/default/tasks/${taskName}`,
+                success: function (response) {
+                    // console.log(response.Item);
+
+                    response.Item.status = true;
+
+                    $.ajax({
+                        type: "PUT",
+                        url: "https://3vg3ydebt9.execute-api.ap-south-1.amazonaws.com/default/tasks/update/",
+                        data: JSON.stringify(response.Item),
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function(response){
+                            // console.log(response);
+
+                            window.location = "/frontend/todos.html"
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1 class="text-center mt-5">Completing Todo Task ...</h1>
+</body>
+</html>
