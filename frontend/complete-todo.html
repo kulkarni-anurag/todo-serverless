@@ -19,6 +19,17 @@
                 success: function (response) {
                     // console.log(response.Item);
 
+                    const curDate = new Date();
+
+                    let date;
+
+                    if(curDate.getDate() < 10){
+                        date = "0" + curDate.getDate();
+                    } else {
+                        date = curDate.getDate();
+                    }
+
+                    response.Item.date = curDate.getFullYear() + "-" + curDate.getMonth() + "-" + date;
                     response.Item.status = true;
 
                     $.ajax({
