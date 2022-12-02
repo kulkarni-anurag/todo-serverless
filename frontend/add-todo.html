@@ -38,11 +38,11 @@
                     dataType: "json",
                     contentType: "application/json",
                     success: function(response){
-                        console.log(response);
+                        // console.log(response);
                         $("#add_err").html(`<div class="alert alert-success alert-dismissible fade show"><strong>${response}</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                     },
                     error: function(error){
-                        console.log(error);
+                        // console.log(error);
                         $("#add_err").html(`<div class="alert alert-danger alert-dismissible fade show"><strong>${error}</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
                     },
                     beforeSend: function(){
