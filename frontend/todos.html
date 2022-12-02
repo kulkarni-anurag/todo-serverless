@@ -20,7 +20,9 @@
 
                     response.Items.forEach(element => {
                         if(element.status == false){
-                            $("#tb-body").append(`<tr><th scope="row">${element.name}</th><td>${element.description}</td><td>${element.date}</td><td><a href="/frontend/complete-todo.html?name=${element.name}" class="btn btn-sm btn-success"><i class='bx bx-right-arrow-alt'></i></a><a href="/frontend/update-todo.html?name=${element.name}" class="btn btn-sm btn-warning ms-1"><i class='bx bx-edit'></i></a><a href="/frontend/delete-todo.html?name=${element.name}" class="btn btn-sm btn-danger ms-1"><i class='bx bx-trash'></i></a></td></tr>`);
+                            $("#tb-body1").append(`<tr><th scope="row">${element.name}</th><td>${element.description}</td><td>${element.date}</td><td><a href="/frontend/complete-todo.html?name=${element.name}" class="btn btn-sm btn-success"><i class='bx bx-right-arrow-alt'></i></a><a href="/frontend/update-todo.html?name=${element.name}" class="btn btn-sm btn-warning ms-1"><i class='bx bx-edit'></i></a><a href="/frontend/delete-todo.html?name=${element.name}" class="btn btn-sm btn-danger ms-1"><i class='bx bx-trash'></i></a></td></tr>`);
+                        } else {
+                            $("#tb-body2").append(`<tr><th scope="row">${element.name}</th><td>${element.description}</td><td>${element.date}</td><td><a href="/frontend/delete-todo.html?name=${element.name}" class="btn btn-sm btn-danger ms-1"><i class='bx bx-trash'></i></a></td></tr>`);
                         }
                     });
                 }
@@ -57,6 +59,7 @@
             <h1 class="text-center">View all Todos</h1>
 
             <table class="table table-bordered table-striped table-hover mt-4">
+                <caption>Pending Tasks</caption>
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -65,7 +68,20 @@
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
-                <tbody id="tb-body"></tbody>
+                <tbody id="tb-body1"></tbody>
+            </table>
+
+            <table class="table table-bordered table-striped table-hover mt-4">
+                <caption>Completed Tasks</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Completed Date</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tb-body2"></tbody>
             </table>
         </div>
     </div>
